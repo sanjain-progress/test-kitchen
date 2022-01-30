@@ -6,7 +6,7 @@ menu:
     weight: 15
 ---
 
-kitchen-vagrant is a Test Kitchen *driver* for HashiCorp Vagrant. A full example reference can be found [here](https://github.com/test-kitchen/kitchen-vagrant/blob/master/example/kitchen.vagrant.yml)
+kitchen-vagrant is a Test Kitchen *driver* for HashiCorp Vagrant. A full example reference can be found [here](https://github.com/test-kitchen/kitchen-vagrant/blob/main/example/kitchen.vagrant.yml)
 
 Example **kitchen.yml**:
 
@@ -16,7 +16,7 @@ driver:
   name: vagrant
 
 provisioner:
-  name: chef_zero
+  name: chef_infra
 
 verifier:
   name: inspec

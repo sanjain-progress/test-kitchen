@@ -21,7 +21,7 @@ driver:
 
 # Configure the provisioner (config management)
 provisioner:
-  name: chef_zero #chef_zero, chef_solo, salt_solo, puppet_apply, ansible_playbook, shell
+  name: chef_infra #chef_infra (legacy of chef_zero), chef_solo, salt_solo, puppet_apply, ansible_playbook, shell
 
 # Configure the verifier (testing framework)
 verifier:
@@ -34,7 +34,7 @@ verifier:
 platforms:
   # Drivers may support defaults that automatically
   # map certain names to an image for the given driver
-  - name: ubuntu-16.04
+  - name: ubuntu-20.04
   - name: centos-8
 
 # Enumerate suites
@@ -67,7 +67,7 @@ you'll need it.
     memory: 4096
 ~~~
 
-The driver tries to closely mirror the upstream, as illustrated by [forwarded_port](https://docs.vagrantup.com/v2/networking/forwarded_ports.html) and [private_network](https://docs.vagrantup.com/v2/networking/private_network.html).
+The driver tries to closely mirror the upstream, as illustrated by [forwarded_port](https://www.vagrantup.com/docs/networking/forwarded_ports) and [private_network](https://www.vagrantup.com/docs/networking/private_network).
 
 If you would like more information the [kitchen-vagrant](https://github.com/test-kitchen/kitchen-vagrant) github page has more.
 
@@ -87,7 +87,7 @@ provisioner:
     environment: test
 
 platforms:
-  - name: ubuntu-16.04
+  - name: ubuntu-20.04
 
 suites:
   - name: default

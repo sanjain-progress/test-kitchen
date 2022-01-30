@@ -3,14 +3,12 @@ trigger:
   batch: true
   branches:
     include:
-      - master
-      - 1-stable
+      - main
 pr:
   autoCancel: true
   branches:
     include:
-      - master
-      - 1-stable
+      - main
 
 variables:
   BUNDLE_PATH: $(Pipeline.Workspace)/.bundle
@@ -36,6 +34,12 @@ stages:
               KITCHEN_YAML: kitchen.windows.yml
             WindowsProduct_Ruby27:
               version: 2.7
+              machine_user: test_user
+              machine_pass: Pass@word1
+              machine_port: 5985
+              KITCHEN_YAML: kitchen.windows-product.yml
+            WindowsProduct_Ruby30:
+              version: 3.0
               machine_user: test_user
               machine_pass: Pass@word1
               machine_port: 5985
@@ -85,6 +89,8 @@ stages:
               version: 2.6
             Mac_Ruby27:
               version: 2.7
+            Mac_Ruby30:
+              version: 3.0
         pool:
           vmImage: "macOS-latest"
         steps:
@@ -124,6 +130,8 @@ stages:
               version: 2.6
             Linux_Ruby27:
               version: 2.7
+            Linux_Ruby30:
+              version: 3.0
         pool:
           vmImage: "ubuntu-latest"
         steps:
@@ -284,7 +292,7 @@ stages:
     dependsOn: Build
     jobs:
       - job: Package
-        condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'), notIn(variables['Build.Reason'], 'PullRequest'))
+        condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/main'), notIn(variables['Build.Reason'], 'PullRequest'))
         pool:
           imageName: "ubuntu-16.04"
         steps:
